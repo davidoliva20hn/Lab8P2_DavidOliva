@@ -23,5 +23,10 @@ public class Pico {
         }
         this.tiempoEnRomper = 0.0f;
     }
+    public String tostring(){
+        
+        return null;   
+    }
+            
 
 }  

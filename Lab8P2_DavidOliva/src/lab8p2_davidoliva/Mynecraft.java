@@ -86,6 +86,9 @@ public class Mynecraft {
             if (palos >= 2 && lingotesDeHierro >= 3) {
                 Pico pico = new Pico("hierro");
                 picos.add(pico);
+                lingotesDeHierro=lingotesDeHierro-3;
+                palos=palos-2;
+                System.out.println("Se agrego un Pico de hierro");
             } else if (palos < 2) {
                 System.out.println("Tienes insuficiente palos ");
             } else if (lingotesDeHierro < 3) {
@@ -95,6 +98,9 @@ public class Mynecraft {
             if (palos >= 2 && diamantes >= 3) {
                 Pico pico = new Pico("diamante");
                 picos.add(pico);
+                palos=palos-2;
+                diamantes=diamantes-3;
+                System.out.println("Se agrego un Pico de diamante ");
             } else if (palos < 2) {
                 System.out.println("Tienes insuficiente palos");
             } else if (diamantes < 3) {
@@ -104,14 +110,60 @@ public class Mynecraft {
     }
 
     public void mejorarPico() {
-        
+        boolean valor=false;
+         int cont =0;
+        for (int i = 0; i < picos.size(); i++) {
+            String material=picos.get(i).material;
+            if (material.equals("hierro")){
+                picos.remove(i);
+                Pico pico = new Pico("diamante");
+                picos.add(i,pico);
+                diamantes=diamantes-3;
+                System.out.println("se ha mejorado un pico de hierro");
+                break;
+            }
+            
+            if (cont==picos.size()-1&&material.equals("diamante")){
+               System.out.println("no hay pico que mejorado"); 
+            }
+            cont ++;
+        }
     }
 
     public void listarPicos() {
-        
+        int cont=0;
+        for (int i = 0; i < picos.size(); i++) {
+            String nombre = picos.get(i).material;
+            if (nombre.equals("hierro")){
+               System.out.println(cont+". pico de "+nombre+", vida restante: 8"); 
+            }else if (nombre.equals("diamante")){
+               System.out.println(cont+". pico de "+nombre+", vida restante: 14"); 
+            }
+            
+        }
     }
 
     public void agregarBloque() {
+        int opc;
+        System.out.println("Agregar bloque de odsidiana");
+        System.out.println("Agregar bloque de oro");
+        System.out.println("Agregar bloque de carbon");
+        System.out.println("Que bloque desea agregar:");
+        opc=lea.nextInt();
+        switch (opc) {
+            case 1:
+                System.out.println("Se Agrego un bloque de odsidiana");
+                bloques.add("bloque de odsidiana");
+                break;
+            case 2:
+                System.out.println("Se Agrego un bloque de oro");
+                 bloques.add("bloque de oro");
+                break;
+            case 3:
+                System.out.println("Se Agrego un bloque de carbon");
+                 bloques.add("bloque de oro");
+                break;
+        }
        
     }
 
@@ -120,6 +172,11 @@ public class Mynecraft {
     }
 
     public void listarBloques() {
-        
+        int cont = 0;
+        for (int i = 0; i < bloques.size(); i++) {
+            String nombre = bloques.get(i);
+            System.out.println(cont + ". " + nombre);
+        }
+
     }
 }
